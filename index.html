@@ -1,35 +1,620 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Kent Jym Katigbak — Engineering Portfolio</title>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
-</head>
-<body>
-<div id="prog"></div><canvas id="bg"></canvas><div id="glow"></div>
-<nav><div class="logo mono">&lt;<b>KENT</b>/&gt;</div>
-<ul id="menu"><li><a href="#about">About</a></li><li><a href="#skills">Skills</a></li><li><a href="#experience">Experience</a></li><li><a href="#projects">Focus</a></li><li><a href="#certs">Certs</a></li><li><a href="#contact">Contact</a></li></ul>
-<button id="theme" aria-label="Toggle theme">◐ Theme</button></nav>
-<main>
-<section class="hero" id="home">
-<div class="tag mono" id="hi"></div>
-<h1 class="grad" id="name"></h1>
-<div class="type mono" id="type"></div>
-<div class="cta"><a class="btn p" href="#projects">Explore my work</a><a class="btn" href="#contact">Let’s connect</a></div>
-</section>
-<section id="about"><div class="rv"><h2><span>//</span> About</h2><p class="sub">Who’s behind the screen</p>
-<div class="about"><div class="glass"><p id="bio"></p></div><div class="stats" id="stats"></div></div></div></section>
-<section id="skills"><div class="rv"><h2><span>//</span> Skills</h2><p class="sub">Tools and strengths I bring</p>
-<div class="tabs" id="tabs"></div><div class="skills" id="skills-grid"></div></div></section>
-<section id="experience"><div class="rv"><h2><span>//</span> Experience</h2><p class="sub">The journey so far</p><div class="tl" id="tl"></div></div></section>
-<section id="projects"><div class="rv"><h2><span>//</span> Core Focus</h2><p class="sub">Where I create impact on the factory floor — hover and explore</p><div class="grid" id="proj"></div></div></section>
-<section id="certs"><div class="rv"><h2><span>//</span> Certifications</h2><p class="sub">15 credentials across lean, data, safety and management</p><div class="grid" id="certgrid"></div></div></section>
-<section id="contact"><div class="glass contact rv"><div class="tag mono">Open to opportunities</div><h2 class="grad">Let’s build something great.</h2><p class="sub" id="cmsg"></p><div class="links" id="links"></div></div></section>
-</main>
-<footer class="mono" id="foot"></footer>
-<script src="data.js"></script>
-<script src="main.js"></script>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      Kent Jym Katigbak | Industrial Engineer · Equipment, Process & Systems
+      Engineering
+    </title>
+    <meta
+      name="description"
+      content="Kent Jym Katigbak: BS Industrial Engineering, Engineering Supervisor at Furukawa Automotive Systems. Data analytics, equipment and process engineering, Lean Six Sigma, inventory management."
+    />
+    <meta name="author" content="Kent Jym Katigbak" />
+    <meta name="theme-color" content="#061522" />
+    <meta
+      property="og:title"
+      content="Kent Jym Katigbak | Industrial Engineer"
+    />
+    <meta property="og:description" content="Data in. Downtime down." />
+    <meta property="og:type" content="website" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23061522'/%3E%3Cpath d='M8 22V10l8 6-8 6zm10-12h6v12h-6z' fill='%2300E5FF'/%3E%3C/svg%3E"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <div class="prog" id="prog" aria-hidden="true"></div>
+    <div class="ruler" aria-hidden="true"></div>
+    <div class="xy mono" id="xy" aria-hidden="true"></div>
+
+    <header class="nav">
+      <a class="brand" href="#home" aria-label="Kent Jym Katigbak – home"
+        ><span class="logo">KJK</span><span>KATIGBAK<b>.IE</b></span></a
+      >
+      <button
+        class="burger"
+        id="burger"
+        aria-label="Toggle menu"
+        aria-expanded="false"
+        aria-controls="menu"
+      >
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="menu" aria-label="Primary">
+        <a href="#about">Profile</a><a href="#network">Skill Map</a
+        ><a href="#projects">Projects</a><a href="#lab">Metric Lab</a
+        ><a href="#tools">Tools</a><a href="#record">Record</a
+        ><a href="#contact" class="cta-nav">Contact</a>
+      </nav>
+      <span class="nav-ind" id="navInd" aria-hidden="true"></span>
+    </header>
+
+    <main id="main">
+      <!-- HERO -->
+      <section class="hero" id="home">
+        <canvas id="net" aria-hidden="true"></canvas>
+        <div class="wrap hero-in">
+          <div>
+            <p class="mono tag">
+              <i class="dot"></i> INDUSTRIAL ENGINEER · SYSTEMS ENGINEERING
+              SUPERVISOR
+            </p>
+            <h1>DATA IN.<br /><span class="grad">DOWNTIME DOWN.</span></h1>
+            <p class="lead">
+              Results-driven engineering supervisor with expertise in data
+              analytics and process optimization in manufacturing, reducing
+              downtime and leading cross-functional teams through data-driven
+              decisions and systems improvement.
+            </p>
+            <div class="id-card">
+              <strong>Kent Jym Katigbak</strong
+              ><span>Furukawa Automotive Systems · Lipa City, Philippines</span>
+              <p>
+                BS Industrial Engineering, Batangas State University – The
+                National Engineering University (2023)
+              </p>
+            </div>
+            <div class="btns">
+              <a class="btn primary" href="#projects">View My Projects</a>
+              <a
+                class="btn"
+                href="assets/resume.pdf"
+                download="Kent_Jym_Katigbak_Resume.pdf"
+                >Download Resume</a
+              >
+              <a class="btn" href="#contact">Contact Me</a>
+            </div>
+            <div class="social">
+              <a
+                href="https://www.linkedin.com/in/kentjk"
+                target="_blank"
+                rel="noopener noreferrer"
+                >LinkedIn ↗</a
+              ><a href="mailto:kentkatigbak1221@gmail.com">Email ↗</a>
+            </div>
+          </div>
+          <figure
+            class="bp"
+            aria-label="Engineering drawing summarizing career path and the 69 percent MTTR reduction"
+          >
+            <svg viewBox="0 0 560 430" id="bp">
+              <defs>
+                <pattern
+                  id="gr"
+                  width="20"
+                  height="20"
+                  patternUnits="userSpaceOnUse"
+                >
+                  <path
+                    d="M20 0H0V20"
+                    fill="none"
+                    stroke="rgba(0,229,255,.12)"
+                    stroke-width=".6"
+                  />
+                </pattern>
+                <marker
+                  id="ar"
+                  markerWidth="8"
+                  markerHeight="8"
+                  refX="4"
+                  refY="4"
+                  orient="auto-start-reverse"
+                >
+                  <path d="M0 0L8 4 0 8z" fill="#00FFD1" />
+                </marker>
+              </defs>
+              <rect width="560" height="430" fill="url(#gr)" />
+              <rect
+                x="8"
+                y="8"
+                width="544"
+                height="414"
+                fill="none"
+                stroke="#00C8D7"
+                stroke-width="1.2"
+              />
+              <rect
+                x="16"
+                y="16"
+                width="528"
+                height="398"
+                fill="none"
+                stroke="rgba(0,229,255,.4)"
+              />
+              <g class="mono" font-size="9" fill="#A8BBC5">
+                <text x="30" y="40">
+                  FIG. 1 — MTTR, JAN → DEC 2025 (INDEXED, JAN = 100)
+                </text>
+                <text x="46" y="92" fill="#EAF4F7">JAN · 100</text>
+                <text x="234" y="214" fill="#00FFD1">DEC · 31</text>
+              </g>
+              <path
+                d="M46 70V250H320"
+                fill="none"
+                stroke="#A8BBC5"
+                stroke-width="1"
+              />
+              <path
+                class="draw"
+                pathLength="1"
+                d="M60 100L300 202"
+                fill="none"
+                stroke="#00E5FF"
+                stroke-width="2.5"
+              />
+              <circle
+                cx="60"
+                cy="100"
+                r="5"
+                fill="#061522"
+                stroke="#00E5FF"
+                stroke-width="2"
+              />
+              <circle
+                cx="300"
+                cy="202"
+                r="5"
+                fill="#061522"
+                stroke="#00FFD1"
+                stroke-width="2"
+              />
+              <path
+                d="M300 100V202"
+                stroke="#00FFD1"
+                stroke-width="1"
+                stroke-dasharray="3 3"
+              />
+              <path
+                d="M60 100H300"
+                stroke="rgba(0,255,209,.5)"
+                stroke-dasharray="3 3"
+              />
+              <path
+                class="draw d2"
+                pathLength="1"
+                d="M330 104V198"
+                stroke="#00FFD1"
+                fill="none"
+                marker-start="url(#ar)"
+                marker-end="url(#ar)"
+              />
+              <text
+                x="338"
+                y="156"
+                class="mono"
+                font-size="15"
+                fill="#00FFD1"
+                font-weight="700"
+              >
+                −69%
+              </text>
+              <g stroke="#00C8D7" fill="none" class="chain">
+                <path d="M455 82V128M455 172V218" />
+              </g>
+              <g class="mono" font-size="9" text-anchor="middle" fill="#EAF4F7">
+                <circle
+                  cx="455"
+                  cy="60"
+                  r="22"
+                  fill="#0A1E2B"
+                  stroke="#00E5FF"
+                />
+                <text x="455" y="63">PROC</text>
+                <circle
+                  cx="455"
+                  cy="150"
+                  r="22"
+                  fill="#0A1E2B"
+                  stroke="#00E5FF"
+                />
+                <text x="455" y="153">EQUIP</text>
+                <circle
+                  cx="455"
+                  cy="240"
+                  r="22"
+                  fill="#0A1E2B"
+                  stroke="#00FFD1"
+                />
+                <text x="455" y="243">SYS</text>
+              </g>
+              <g class="mono" font-size="9" fill="#A8BBC5">
+                <text x="485" y="63">2023</text>
+                <text x="485" y="153">2025</text>
+                <text x="485" y="243">2026</text>
+              </g>
+              <g stroke="#00C8D7" fill="none">
+                <rect x="30" y="300" width="500" height="100" />
+                <path
+                  d="M30 325H530M30 350H530M30 375H530M115 300V400M335 300V400"
+                />
+              </g>
+              <g class="mono" font-size="9" fill="#A8BBC5">
+                <text x="38" y="316">DRAWN BY</text>
+                <text x="38" y="341">TITLE</text>
+                <text x="38" y="366">DISCIPLINE</text>
+                <text x="38" y="391">ORG</text>
+                <text x="123" y="316" fill="#EAF4F7">K. J. KATIGBAK</text>
+                <text x="123" y="341" fill="#EAF4F7">ENGINEERING PROFILE</text>
+                <text x="123" y="366" fill="#EAF4F7">
+                  EQUIPMENT · PROCESS · SYSTEMS
+                </text>
+                <text x="123" y="391" fill="#EAF4F7">
+                  FURUKAWA AUTOMOTIVE SYSTEMS
+                </text>
+                <text x="343" y="316">SHEET 1 / 1</text>
+                <text x="343" y="341">REV 2026-11</text>
+                <text x="343" y="366">SCALE 1:1</text>
+                <text x="343" y="391" fill="#00FFD1">OPEN TO CONNECT</text>
+              </g>
+            </svg>
+          </figure>
+        </div>
+        <a class="scroll" href="#about" aria-label="Scroll to profile">↓</a>
+      </section>
+
+      <!-- ABOUT -->
+      <section id="about" class="sec">
+        <div class="wrap">
+          <div class="sh">
+            <span class="sheet mono">SHEET 01</span>
+            <h2>Profile &amp; career path</h2>
+            <i class="dim"></i>
+          </div>
+          <div class="two">
+            <div class="reveal">
+              <p>
+                I’m an industrial engineer working in automotive manufacturing
+                at Furukawa Automotive Systems in Lipa City. I started in
+                process engineering, where I facilitated FMEA and NPRA
+                activities, built a standardized Defect Failure Analysis flow
+                and joined Lean Six Sigma, Kaizen and quality initiatives. As
+                Equipment Engineering Supervisor, I developed MTTR, MTBF, JPH
+                and Quality dashboards and helped reduce downtime by 69% using
+                data-driven actions. Today I supervise systems engineers
+                developing internal web applications that reduce cost and
+                improve quality and efficiency.
+              </p>
+              <table class="spec" aria-label="Specification sheet">
+                <caption class="mono">
+                  SPEC SHEET
+                </caption>
+                <tr>
+                  <th>Name</th>
+                  <td>Kent Jym Katigbak</td>
+                </tr>
+                <tr>
+                  <th>Current role</th>
+                  <td>Systems Engineering Supervisor (Sep 2026 – present)</td>
+                </tr>
+                <tr>
+                  <th>Degree</th>
+                  <td>BS Industrial Engineering, 2023</td>
+                </tr>
+                <tr>
+                  <th>GWA</th>
+                  <td>1.7417</td>
+                </tr>
+                <tr>
+                  <th>Coursework</th>
+                  <td>
+                    Data Analytics, Statistics, Process Improvement, Planning
+                  </td>
+                </tr>
+                <tr>
+                  <th>Certified</th>
+                  <td>Lean Six Sigma Green Belt (2024)</td>
+                </tr>
+                <tr>
+                  <th>Base</th>
+                  <td>Mataasnakahoy, Batangas, Philippines</td>
+                </tr>
+              </table>
+            </div>
+            <ol class="route reveal" id="route" aria-label="Career flow"></ol>
+          </div>
+        </div>
+      </section>
+
+      <!-- NETWORK -->
+      <section id="network" class="sec alt">
+        <div class="wrap">
+          <div class="sh">
+            <span class="sheet mono">SHEET 02</span>
+            <h2>Skill &amp; experience network</h2>
+            <i class="dim"></i>
+          </div>
+          <p class="muted">
+            Inner nodes are my roles, outer nodes are skills from my resume.
+            Hover, tap or focus a node to trace its connections.
+          </p>
+          <div class="net-box glass">
+            <svg
+              id="graph"
+              viewBox="-90 0 1080 580"
+              role="group"
+              aria-label="Interactive skills network"
+            ></svg>
+            <p class="mono info" id="gInfo" aria-live="polite">
+              Select a node.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROJECTS -->
+      <section id="projects" class="sec">
+        <div class="wrap">
+          <div class="sh">
+            <span class="sheet mono">SHEET 03</span>
+            <h2>Projects &amp; contributions</h2>
+            <i class="dim"></i>
+          </div>
+          <p class="muted">
+            Each drawing is professional work from my resume.
+            <span class="ph">[EDIT]</span> marks details to complete with your
+            own data.
+          </p>
+          <div
+            class="filters"
+            id="filters"
+            role="group"
+            aria-label="Filter projects"
+          ></div>
+          <div class="cards proj" id="projectGrid"></div>
+        </div>
+      </section>
+
+      <!-- METRIC LAB -->
+      <section id="lab" class="sec alt">
+        <div class="wrap">
+          <div class="sh">
+            <span class="sheet mono">SHEET 04</span>
+            <h2>Metric lab: MTTR · MTBF · JPH</h2>
+            <i class="dim"></i>
+          </div>
+          <p class="muted">
+            The metrics behind my dashboards, made interactive. Inputs are
+            sample values, not company data.
+          </p>
+          <div class="lab glass reveal">
+            <div class="ins">
+              <label
+                >Planned operating hours<input
+                  type="number"
+                  id="iOp"
+                  value="160"
+                  min="1"
+              /></label>
+              <label
+                >Number of failures<input
+                  type="number"
+                  id="iFa"
+                  value="8"
+                  min="1"
+              /></label>
+              <label
+                >Total repair hours<input
+                  type="number"
+                  id="iRp"
+                  value="12"
+                  min="0"
+              /></label>
+              <label
+                >Units produced<input
+                  type="number"
+                  id="iUn"
+                  value="4800"
+                  min="0"
+              /></label>
+              <label
+                >MTTR reduction: <b id="sv" class="mono">69%</b
+                ><input type="range" id="iRed" min="0" max="90" value="69"
+              /></label>
+            </div>
+            <div class="outs">
+              <div class="gauges" id="gauges"></div>
+              <svg
+                viewBox="0 0 360 150"
+                id="labChart"
+                role="img"
+                aria-label="MTTR before and after chart"
+              ></svg>
+              <p class="mono muted" id="labNote"></p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TOOLS -->
+      <section id="tools" class="sec">
+        <div class="wrap">
+          <div class="sh">
+            <span class="sheet mono">SHEET 05</span>
+            <h2>Tools &amp; methods</h2>
+            <i class="dim"></i>
+          </div>
+          <p class="muted">
+            Exactly as listed in my resume. No proficiency scores are shown.
+          </p>
+          <div class="cards three" id="toolGrid"></div>
+          <div class="glass methods reveal">
+            <p class="mono eyebrow">METHODOLOGY STACK</p>
+            <div class="tags" id="methodTags"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- RECORD -->
+      <section id="record" class="sec alt">
+        <div class="wrap">
+          <div class="sh">
+            <span class="sheet mono">SHEET 06</span>
+            <h2>Record, education &amp; training</h2>
+            <i class="dim"></i>
+          </div>
+          <div class="kpis" id="kpiGrid"></div>
+          <div class="glass reveal">
+            <p class="mono eyebrow">
+              CAREER &amp; TRAINING TIMELINE · 2021 – PRESENT
+            </p>
+            <div class="scrollx">
+              <svg
+                id="gantt"
+                viewBox="0 0 900 270"
+                role="img"
+                aria-label="Timeline of roles and trainings"
+              ></svg>
+            </div>
+          </div>
+          <div class="train" id="train"></div>
+        </div>
+      </section>
+
+      <!-- DMAIC -->
+      <section id="method" class="sec phil">
+        <div class="wrap">
+          <div class="sh c">
+            <span class="sheet mono">SHEET 07</span>
+            <h2>The improvement loop</h2>
+            <i class="dim"></i>
+          </div>
+          <p class="muted">
+            DMAIC is on my resume and in my Green Belt training. This is how the
+            loop reads.
+          </p>
+          <div class="loop">
+            <svg id="loop" viewBox="0 0 400 400" aria-hidden="true"></svg>
+            <ol id="loopList"></ol>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact" class="sec">
+        <div class="wrap">
+          <div class="sh">
+            <span class="sheet mono">SHEET 08</span>
+            <h2>Let’s connect</h2>
+            <i class="dim"></i>
+          </div>
+          <div class="two">
+            <div class="reveal">
+              <p>
+                Open to conversations with recruiters, engineers and
+                collaborators about equipment engineering, process engineering,
+                data analytics and operational improvement.
+              </p>
+              <ul class="contact-list">
+                <li>
+                  <span class="mono">EMAIL</span
+                  ><a href="mailto:kentkatigbak1221@gmail.com"
+                    >kentkatigbak1221@gmail.com</a
+                  >
+                </li>
+                <li>
+                  <span class="mono">PHONE</span
+                  ><a href="tel:+639079981101">0907 998 1101</a>
+                </li>
+                <li>
+                  <span class="mono">LINKEDIN</span
+                  ><a
+                    href="https://www.linkedin.com/in/kentjk"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >linkedin.com/in/kentjk</a
+                  >
+                </li>
+                <li>
+                  <span class="mono">LOCATION</span>Mataasnakahoy, Batangas,
+                  Philippines
+                </li>
+              </ul>
+            </div>
+            <form id="form" class="glass reveal" novalidate>
+              <label
+                >Name<input name="name" required autocomplete="name"
+              /></label>
+              <label
+                >Email<input
+                  name="email"
+                  type="email"
+                  required
+                  autocomplete="email"
+              /></label>
+              <label>Subject<input name="subject" required /></label>
+              <label
+                >Message<textarea name="message" rows="5" required></textarea>
+              </label>
+              <button class="btn primary" type="submit">
+                Send via Email App
+              </button>
+              <p class="mono muted" id="formMsg" role="status">
+                Opens your email app with the message pre-filled (no server
+                used).
+              </p>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="foot">
+      <div class="wrap">
+        <span class="mono"
+          >© <span id="yr"></span> Kent Jym Katigbak · free to reuse (MIT)</span
+        ><span class="mono">DATA IN. DOWNTIME DOWN.</span>
+      </div>
+    </footer>
+    <button id="toTop" class="totop" aria-label="Back to top">↑</button>
+    <div
+      class="modal"
+      id="modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="mTitle"
+      hidden
+    >
+      <div class="m-box glass">
+        <button class="m-close" id="mClose" aria-label="Close case study">
+          ✕
+        </button>
+        <div id="mBody"></div>
+      </div>
+    </div>
+    <noscript
+      ><p style="padding: 2rem; text-align: center">
+        Please enable JavaScript to view the portfolio sections.
+      </p></noscript
+    >
+    <script src="js/script.js"></script>
+  </body>
 </html>
