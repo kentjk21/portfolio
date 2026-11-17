@@ -396,7 +396,9 @@ $("#filters").innerHTML = ["All", ...CATS]
   .join("");
 $("#projectGrid").innerHTML = PROJECTS.map(
   (p) =>
-    `<article class="card reveal" data-c="${p.c}"><div class="thumb">${thumb(p)}<em>DWG-${p.n}</em></div><span class="mono" style="color:var(--turq)">${p.c.toUpperCase()} · ${p.type.toUpperCase()}</span><h3>${p.t}</h3><p>${esc(p.desc)}</p><h4>PROBLEM</h4><p>${ph(p.problem)}</p><h4>METHOD</h4><p>${esc(p.method)}</p><h4>RESULT</h4><p>${ph(p.result)}</p><div class="tags">${p.tools.map((t) => `<span>${t}</span>`).join("")}</div><button class="btn" data-id="${p.id}">View Case Study</button></article>`,
+/*    `<article class="card reveal" data-c="${p.c}"><div class="thumb">${thumb(p)}<em>DWG-${p.n}</em></div><span class="mono" style="color:var(--turq)">${p.c.toUpperCase()} · ${p.type.toUpperCase()}</span><h3>${p.t}</h3><p>${esc(p.desc)}</p><h4>PROBLEM</h4><p>${ph(p.problem)}</p><h4>METHOD</h4><p>${esc(p.method)}</p><h4>RESULT</h4><p>${ph(p.result)}</p><div class="tags">${p.tools.map((t) => `<span>${t}</span>`).join("")}</div><button class="btn" data-id="${p.id}">View Case Study</button></article>`,
+).join("");*/
+    `<article class="card reveal" data-c="${p.c}"><div class="thumb">${thumb(p)}<em>DWG-${p.n}</em></div><span class="mono" style="color:var(--turq)">${p.c.toUpperCase()} · ${p.type.toUpperCase()}</span><h3>${p.t}</h3><p>${esc(p.desc)}</p><h4>PROBLEM</h4><p>${ph(p.problem)}</p><h4>METHOD</h4><p>${esc(p.method)}</p><h4>RESULT</h4><p>${ph(p.result)}</p><div class="tags">${p.tools.map((t) => `<span>${t}</span>`).join("")}</div><button class="btn" data-id="${p.id}"></button></article>`,
 ).join("");
 $("#filters").addEventListener("click", (e) => {
   const b = e.target.closest("button");
@@ -649,42 +651,6 @@ addEventListener("keydown", (e) => {
     else run = false;
   }
   tick(0);
-})();
-
-// metric lab
-(function () {
-  const f = (id) => +$("#" + id).value || 0;
-  function calc() {
-    const op = Math.max(f("iOp"), 1),
-      fa = Math.max(f("iFa"), 1),
-      rp = Math.min(f("iRp"), op),
-      un = f("iUn"),
-      red = f("iRed") / 100;
-    $("#sv").textContent = Math.round(red * 100) + "%";
-    const mttr = rp / fa,
-      mtbf = (op - rp) / fa,
-      av = ((op - rp) / op) * 100,
-      jph = un / op,
-      m2 = mttr * (1 - red),
-      av2 = ((op - rp * (1 - red)) / op) * 100;
-    $("#gauges").innerHTML = [
-      ["MTBF (h)", mtbf.toFixed(1)],
-      ["MTTR (h)", mttr.toFixed(2)],
-      ["JPH", jph.toFixed(1)],
-      ["AVAILABILITY", av.toFixed(1) + "%"],
-    ]
-      .map(([l, v]) => `<div class="g"><b>${v}</b><span>${l}</span></div>`)
-      .join("");
-    const mx = Math.max(mttr, 0.01),
-      h1 = (100 * mttr) / mx,
-      h2 = (100 * m2) / mx;
-    $("#labChart").innerHTML =
-      `<path d="M30 120H340" stroke="#A8BBC5"/><rect x="80" y="${120 - h1}" width="80" height="${h1}" fill="#A8BBC5" opacity=".7"/><rect x="220" y="${120 - h2}" width="80" height="${h2}" fill="#00E5FF"/><g font-family="monospace" font-size="11" fill="#EAF4F7" text-anchor="middle"><text x="120" y="140">BEFORE ${mttr.toFixed(2)}h</text><text x="260" y="140">AFTER ${m2.toFixed(2)}h</text></g>`;
-    $("#labNote").textContent =
-      `Same failure count, MTTR cut by ${Math.round(red * 100)}%: availability moves from ${av.toFixed(1)}% to ${av2.toFixed(1)}% (sample inputs).`;
-  }
-  $$(".lab input").forEach((i) => i.addEventListener("input", calc));
-  calc();
 })();
 
 // career/training chart
